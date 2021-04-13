@@ -1,0 +1,10 @@
+C:\Users\jenny\Desktop\CalculatorApp\CalculatorApplication\bin\Debug\CalculatorApplication.exe.config
+C:\Users\jenny\Desktop\CalculatorApp\CalculatorApplication\bin\Debug\CalculatorApplication.exe
+C:\Users\jenny\Desktop\CalculatorApp\CalculatorApplication\bin\Debug\CalculatorApplication.pdb
+C:\Users\jenny\Desktop\CalculatorApp\CalculatorApplication\obj\Debug\CalculatorApplication.csprojAssemblyReference.cache
+C:\Users\jenny\Desktop\CalculatorApp\CalculatorApplication\obj\Debug\CalculatorApplication.Form1.resources
+C:\Users\jenny\Desktop\CalculatorApp\CalculatorApplication\obj\Debug\CalculatorApplication.Properties.Resources.resources
+C:\Users\jenny\Desktop\CalculatorApp\CalculatorApplication\obj\Debug\CalculatorApplication.csproj.GenerateResource.cache
+C:\Users\jenny\Desktop\CalculatorApp\CalculatorApplication\obj\Debug\CalculatorApplication.csproj.CoreCompileInputs.cache
+C:\Users\jenny\Desktop\CalculatorApp\CalculatorApplication\obj\Debug\CalculatorApplication.exe
+C:\Users\jenny\Desktop\CalculatorApp\CalculatorApplication\obj\Debug\CalculatorApplication.pdb
