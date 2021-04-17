@@ -17,6 +17,7 @@ namespace CalculatorApplication
         private static Nullable<Int64> leftValue = null;
         private static bool isNegative = false;
         private static bool clearOutput = false;
+        private static char code;
 
         public Form1()
         {
@@ -115,11 +116,121 @@ namespace CalculatorApplication
             }
         }
 
-        private void addButton_Click(object sender, EventArgs e)
+        //Function -> appends the numbers and symbols to the current expression output box
+        private void appendCurrentExpression(string symbol)
         {
             //append current expression to expression box
-            currentExpressionBox.Text = " + " + calculatorOutputBox.Text + currentExpressionBox.Text;
+            currentExpressionBox.Text = symbol + calculatorOutputBox.Text + currentExpressionBox.Text;
             clearOutput = true;
+        }
+
+        private void MathCalculations()
+        {
+            //convert the current result to int to do math
+            result = ConvertOutputToInt();
+
+            //based on the arithmetic button clicked, depends what math operation we do
+            switch (code)
+            {
+                case '+':
+                    leftValue = leftValue + result;
+                    break;
+                case '-':
+                    leftValue = leftValue - result;
+                    break;
+                case '*':
+                    leftValue = leftValue * result;
+                    break;
+                case '%':
+                    leftValue = leftValue % result;
+                    break;
+                default:
+                    leftValue = leftValue / result;
+                    break;
+            }
+
+
+        }
+        private void addButton_Click(object sender, EventArgs e)
+        {
+            appendCurrentExpression("+");
+        }
+
+        private void subtractButton_Click(object sender, EventArgs e)
+        {
+            appendCurrentExpression("-");
+        }
+
+        private void multiplyButton_Click(object sender, EventArgs e)
+        {
+            appendCurrentExpression("*");
+        }
+
+        private void divisionButton_Click(object sender, EventArgs e)
+        {
+            appendCurrentExpression("\x00F7");
+        }
+
+        private void moduloButton_Click(object sender, EventArgs e)
+        {
+            appendCurrentExpression("%");
+        }
+
+        private void equalButton_Click(object sender, EventArgs e)
+        {
+            //calculate the value
+            MathCalculations();
+
+            //reset code value
+            code = ' ';
+
+            //clear out current expression since we want to see final value
+            currentExpressionBox.Text = "";
+
+            //format the total value and set the flag
+            calculatorOutputBox.Text = String.Format("{0:#,0}", leftValue);
+            clearOutput = true;
+        }
+
+        private void ArithmeticButtonClick(object sender, EventArgs e)
+        {
+            if (sender == null)
+                return;
+
+            //convert the sender to button
+            Button arithmeticOperation = (Button)sender;
+
+            ///if typecast fail then return
+            if (arithmeticOperation == null)
+                return;
+
+            //if first button/operand captured
+            if(leftValue == null)
+            {
+                leftValue = ConvertOutputToInt();
+
+                //set code to whatever the text of the button is
+                code = arithmeticOperation.Text[0];
+            }
+            //else it is not the first operand captured so see what code it is and do the math 
+            else
+            {
+                if (code != ' ')
+                {
+                    MathCalculations();
+                    code = arithmeticOperation.Text[0];
+                }
+                else
+                {
+                    code = arithmeticOperation.Text[0];
+                }
+            }
+            //output the value
+            currentExpressionBox.Text = " " + arithmeticOperation.Text + " " + calculatorOutputBox.Text + currentExpressionBox.Text;
+            calculatorOutputBox.Text = String.Format("{0:#,0}", leftValue);
+            clearOutput = true;
+
+
         }
     }
 }
