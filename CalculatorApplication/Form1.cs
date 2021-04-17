@@ -14,9 +14,13 @@ namespace CalculatorApplication
     {
         //the result of calculations
         private static Int64 result;
+
+        //left operand vlaue of expression
         private static Nullable<Int64> leftValue = null;
         private static bool isNegative = false;
         private static bool clearOutput = false;
+
+        //char var to hold value of arithmetic operation 
         private static char code;
 
         public Form1()
